@@ -14,43 +14,31 @@ piCam.configure("preview") # 3 things for configure, preview, video, still_image
 piCam.start()
 
 piCam.set_controls({"AfMode": controls.AfModeEnum.Continuous})
-frame=piCam.capture_array()
-rotated_image = cv2.transpose(frame)
-rotated_image = cv2.flip(rotated_image, flipCode=1)
-frame = rotated_image
+#frame=piCam.capture_array()
+#rotated_image = cv2.transpose(frame)
+#rotated_image = cv2.flip(rotated_image, flipCode=1)
+#frame = rotated_image
 
-
-
-#fourcc = cv2.VideoWriter_fourcc(*'mp4v') 
-
-#def generate_frames():
-#    #with picamera.PiCamera() as camera:
-#    with picamera2.Picamera2() as camera:
-#        camera.resolution = (640, 480)
-#        camera.framerate = 24
-#        stream = io.BytesIO()
-
-#        for _ in camera.capture_continuous(stream, 'jpeg', use_video_port=True):
-#            stream.seek(0)
-#            yield b'--frame\r\nContent-Type: image/jpeg\r\n\r\n' + stream.read() + b'\r\n'
-#            stream.seek(0)
-#            stream.truncate()
 
 def webframes():
     print("Entering live feed")
-    global frame
+    global frame, piCam
     
-    piCam.set_controls({"AfMode": controls.AfModeEnum.Continuous})
-    frame=piCam.capture_array()
-    rotated_image = cv2.transpose(frame)
-    rotated_image = cv2.flip(rotated_image, flipCode=1)
-    frame = rotated_image
-    cv2.waitKey(1)
+    #piCam.set_controls({"AfMode": controls.AfModeEnum.Continuous})
+    #frame=piCam.capture_array()
+    #rotated_image = cv2.transpose(frame)
+    #rotated_image = cv2.flip(rotated_image, flipCode=1)
+    #frame = rotated_image
+    #cv2.waitKey(1)
     
     while True:
         #frame = camera.capture_arry("main")
         #cv2.waitKey(1)
         try:
+            frame = piCam.capture_array()  # Capture the frame inside the loop
+            rotated_image = cv2.transpose(frame)
+            rotated_image = cv2.flip(rotated_image, flipCode=1)
+            frame = rotated_image
             ret, buffer = cv2.imencode('.jpg', frame)
             webframe = buffer.tobytes()
             yield (b'--webframe\r\n'
