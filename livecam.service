@@ -1,0 +1,10 @@
+[Unit]
+Description=Sense HAT TPH display.
+After=multi-user.target
+
+[Service]
+Type=idle
+ExecStart=/usr/bin/python3 /home/gen64/Desktop/picamera2-flask/code.py
+
+[Install]
+WantedBy=multi-user.target
