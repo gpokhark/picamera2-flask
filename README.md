@@ -5,6 +5,9 @@
 
 ## livecam.service 
 - Copy this script to `/etc/systemd/system`.
-	`sudo cp livecam.service /etc/systemd/system`
+	
+		`sudo cp livecam.service /etc/systemd/system`
+
 - Enable this service at boot.
-	`sudo systemctl enable livecam`
+	
+		`sudo systemctl enable livecam`
