@@ -4,7 +4,8 @@ After=multi-user.target
 
 [Service]
 Type=idle
-ExecStart=/usr/bin/python3 /home/gen64/Desktop/picamera2-flask/code.py
+#ExecStart=/usr/bin/python3 /home/gen64/Desktop/picamera2-flask/code.py
+ExecStart=/home/gen64/.venv/picam-env/bin/python3 /home/gen64/Desktop/picamera2-flash/code-telegram.py
 
 [Install]
 WantedBy=multi-user.target
