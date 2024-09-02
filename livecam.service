@@ -1,5 +1,5 @@
 [Unit]
-Description=Sense HAT TPH display.
+Description=Live camera on flash server.
 After=multi-user.target
 
 [Service]
