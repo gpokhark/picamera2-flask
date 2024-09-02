@@ -11,3 +11,7 @@
 - Enable this service at boot.
 	
 		`sudo systemctl enable livecam`
+
+## config_template.py
+- Replace the 'xxyyzz' with your telegram API token.
+- After that rename and savve this file as config.py.
