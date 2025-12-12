@@ -12,7 +12,8 @@ sudo apt install -y python3-venv python3-picamera2 libcamera-apps
 echo "[+] Installing to $TARGET_DIR"
 sudo rm -rf "$TARGET_DIR"
 sudo cp -r "$REPO_DIR" "$TARGET_DIR"
-sudo chown -R pi:pi "$TARGET_DIR"
+REAL_USER=$(logname)
+sudo chown -R "$REAL_USER:$REAL_USER" "$TARGET_DIR"
 
 cd "$TARGET_DIR"
 
