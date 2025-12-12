@@ -1,11 +1,16 @@
 [Unit]
-Description=Live camera on flash server.
-After=multi-user.target
+Description=Live Camera Flask + Telegram Bot
+After=network.target
 
 [Service]
-Type=idle
-#ExecStart=/usr/bin/python3 /home/gen64/Desktop/picamera2-flask/code.py
-ExecStart=/home/gen64/.venv/picam-env/bin/python3 /home/gen64/Desktop/picamera2-flask/code-telegram.py
+Type=simple
+User=pi
+WorkingDirectory=/opt/livecam
+ExecStart=/opt/livecam/.venv/bin/python /opt/livecam/app.py
+Restart=always
+RestartSec=5
+Environment=PYTHONUNBUFFERED=1
 
 [Install]
 WantedBy=multi-user.target
+
